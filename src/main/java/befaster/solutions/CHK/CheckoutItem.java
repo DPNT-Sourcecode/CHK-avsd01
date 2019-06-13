@@ -15,6 +15,10 @@ public class CheckoutItem {
     
     private final SpecialOffer availableOffer;
     
+    public CheckoutItem(int quantity, int singleItemPrice) {
+        this(quantity, singleItemPrice, null);
+    }
+    
     public CheckoutItem(int quantity, int singleItemPrice, SpecialOffer availableOffer) {
         this.quantity = quantity;
         this.singleItemPrice = singleItemPrice;
@@ -35,4 +39,5 @@ public class CheckoutItem {
         return new CheckoutItem(quantity + 1, singleItemPrice, availableOffer);
     }
 }
+
 
