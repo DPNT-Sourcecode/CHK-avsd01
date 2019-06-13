@@ -34,9 +34,17 @@ public abstract class DiscountPack {
     
     public abstract DiscountType getDiscountType();
     public abstract void applyToCart(CheckoutCart cart);
-    public abstract int simulateImpactOnCart(CheckoutCart cart);
+    
+    public int simulateImpactOnCart(CheckoutCart cart) {
+        CheckoutCart fullCopy = cart.createCopy();
+        int beforeDiscount = fullCopy.getTotal();
+        applyToCart(fullCopy);
+        
+        return beforeDiscount - fullCopy.getTotal();
+    } 
     
     public interface DiscountPackReceiver {
         public void discountPackReceived(DiscountPack discountPack);
     }
 }
+
