@@ -5,6 +5,11 @@
  */
 package befaster.solutions.CHK;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.List;
+
 /**
  *
  * @author robert.damian
@@ -13,16 +18,16 @@ public class CheckoutItem {
     protected final int quantity;
     protected final int singleItemPrice;
     
-    private final SpecialOffer availableOffer;
-    
-    public CheckoutItem(int quantity, int singleItemPrice) {
-        this(quantity, singleItemPrice, null);
+    private final List<SpecialOffer> availableOffers;
+        
+    public CheckoutItem(int quantity, int singleItemPrice, SpecialOffer... availableOffers) {
+        this(quantity, singleItemPrice, Arrays.asList(availableOffers));
     }
     
-    public CheckoutItem(int quantity, int singleItemPrice, SpecialOffer availableOffer) {
+    public CheckoutItem(int quantity, int singleItemPrice, Collection<SpecialOffer> availableOffers) {
         this.quantity = quantity;
         this.singleItemPrice = singleItemPrice;
-        this.availableOffer = availableOffer;
+        this.availableOffers = new ArrayList<>(availableOffers);
     }
     
     public int getTotal() {
@@ -30,12 +35,14 @@ public class CheckoutItem {
             return singleItemPrice * quantity;
         }
 
+        
         DiscountPack discountPack = availableOffer.computeOfferFor(quantity);
         return discountPack.getPrice() + 
                 (quantity - discountPack.getItemCount()) * singleItemPrice;
     }
     
     public CheckoutItem getIncreasedCopy() {
-        return new CheckoutItem(quantity + 1, singleItemPrice, availableOffer);
+        return new CheckoutItem(quantity + 1, singleItemPrice, availableOffers);
     }
 }
+

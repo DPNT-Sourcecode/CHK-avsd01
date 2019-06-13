@@ -23,4 +23,9 @@ public class SpecialOffer {
         int groups = itemCount / eligibleQuantity;
         return new DiscountPack(groups * eligibleQuantity, price * groups);
     }
+    
+    public boolean appliesTo(int quantity) {
+        return quantity >= eligibleQuantity;
+    }
 }
+
