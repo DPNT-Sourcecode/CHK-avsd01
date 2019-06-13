@@ -165,8 +165,3 @@ public class CheckoutSolutionTest {
         Assert.assertEquals(62, result);
     }
 }
-
-
-
-
-

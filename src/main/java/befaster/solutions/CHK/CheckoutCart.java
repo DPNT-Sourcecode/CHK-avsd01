@@ -119,8 +119,8 @@ public class CheckoutCart implements
                 .map(sku -> getItemWithSKU(sku))
                 .filter(i -> i != null)
                 .sorted((i1, i2) -> 
-                        i1.getPriceForSingleItem() - 
-                        i2.getPriceForSingleItem())
+                        i2.getPriceForSingleItem() - 
+                        i1.getPriceForSingleItem())
                 .collect(Collectors.toList());
     }
     
@@ -140,8 +140,3 @@ public class CheckoutCart implements
         return new CheckoutCart(cartItems);
     }
 }
-
-
-
-
-
