@@ -72,8 +72,10 @@ public class CheckoutItem {
     }
     
     public CheckoutItem getDecreasedCopy(int amount) {
-        return new CheckoutItem(itemSKU, quantity - amount, 
+        int newAmount = amount < quantity ? quantity - amount : 0;
+        return new CheckoutItem(itemSKU, newAmount, 
                 singleItemPrice, availableOffers);
     }
 }
+
 
