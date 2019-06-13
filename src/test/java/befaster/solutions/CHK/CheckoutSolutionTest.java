@@ -55,5 +55,12 @@ public class CheckoutSolutionTest {
         int result = new CheckoutSolution().checkout("a b c d");
         Assert.assertEquals(115, result);
     }
+    
+    @Test
+    public void testInvalidCart() {
+        int result = new CheckoutSolution().checkout("-");
+        Assert.assertEquals(-1, result);
+    }
 }
+
 
