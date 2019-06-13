@@ -5,7 +5,7 @@
  */
 package befaster.solutions.CHK;
 
-import befaster.solutions.CHK.offers.SpecialOffer;
+import befaster.solutions.CHK.discounts.DiscountPack;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -15,9 +15,10 @@ import java.util.List;
  *
  * @author robert.damian
  */
-public class CheckoutCart implements SpecialOffer.SpecialOfferReceiver{
+public class CheckoutCart implements  
+        DiscountPack.DiscountPackReceiver{
     private List<CheckoutItem> cartItems;
-    private List<SpecialOffer> offerList;
+    private List<DiscountPack> discountPackList;
     
     public CheckoutCart() {
         this(Collections.EMPTY_LIST);
@@ -25,7 +26,7 @@ public class CheckoutCart implements SpecialOffer.SpecialOfferReceiver{
     
     public CheckoutCart(Collection<CheckoutItem> items) {
         this.cartItems = new ArrayList<>(items);
-        offerList = new ArrayList<SpecialOffer>();
+        discountPackList = new ArrayList<>();
     }
     
     public void computeOffers() {
@@ -33,6 +34,8 @@ public class CheckoutCart implements SpecialOffer.SpecialOfferReceiver{
     }
     
     public int getTotal() {
+        offerList.stream().map(o -> );
+        
         return cartItems.stream().mapToInt(CheckoutItem::getTotal).sum();
     }
     
@@ -41,8 +44,9 @@ public class CheckoutCart implements SpecialOffer.SpecialOfferReceiver{
     }
 
     @Override
-    public void specialOfferReceived(SpecialOffer offer) {
-        offerList.add(offer);
+    public void discountPackReceived(DiscountPack discoutPack) {
+        discountPackList.add(discoutPack);
     }
 }
+
 

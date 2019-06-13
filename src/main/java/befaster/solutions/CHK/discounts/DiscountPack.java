@@ -17,7 +17,8 @@ public abstract class DiscountPack {
     public abstract DiscountType getDiscountType();
     
     public interface DiscountPackReceiver {
-        public void discountPackReceived();
+        public void discountPackReceived(DiscountPack discountPack);
     }
 }
+
 

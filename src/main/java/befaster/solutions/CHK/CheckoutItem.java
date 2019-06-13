@@ -5,8 +5,8 @@
  */
 package befaster.solutions.CHK;
 
+import befaster.solutions.CHK.discounts.DiscountPack.DiscountPackReceiver;
 import befaster.solutions.CHK.offers.SpecialOffer;
-import befaster.solutions.CHK.offers.SpecialOffer.SpecialOfferReceiver;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -40,11 +40,12 @@ public class CheckoutItem {
         return quantity * singleItemPrice;
     }
     
-    public void computeAllOffers(SpecialOfferReceiver offerReceiver) {
+    public void computeAllOffers(DiscountPackReceiver offerReceiver) {
         computeAllOffers(offerReceiver, quantity);
     }
     
-    public void computeAllOffers(SpecialOfferReceiver offerReceiver, int leftQuantity) {
+    public void computeAllOffers(DiscountPackReceiver discountPackReceiver, 
+            int leftQuantity) {
         SpecialOffer bestOffer = availableOffers.stream()
                 .filter(o -> o.appliesTo(quantity))
                 .sorted()
@@ -53,14 +54,16 @@ public class CheckoutItem {
         if (bestOffer == null) {
             return ;
         }
-        
-        offerReceiver.specialOfferReceived(bestOffer);
+        bestOffer.computeOfferFor(leftQuantity);
+        discountPackReceiver.discountPackReceived(bestOffer.computeOfferFor(
+                leftQuantity));
         leftQuantity = leftQuantity - 
                 bestOffer.getQuantityConsumedByOffer(leftQuantity);
-        computeAllOffers(offerReceiver, leftQuantity);
+        computeAllOffers(discountPackReceiver, leftQuantity);
     }
     
     public CheckoutItem getIncreasedCopy() {
         return new CheckoutItem(quantity + 1, singleItemPrice, availableOffers);
     }
 }
+
