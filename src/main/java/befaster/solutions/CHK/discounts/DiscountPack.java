@@ -9,21 +9,11 @@ package befaster.solutions.CHK.discounts;
  *
  * @author robert.damian
  */
-public class DiscountPack {
-    private final int itemCount;
-    private final int price;
+public abstract class DiscountPack {
+    public enum DiscountType {
+        OTHER_FREE, PRICE_REDUCTION
+    }
     
-    public DiscountPack(int itemCount, int price) {
-        this.itemCount = itemCount;
-        this.price = price;
-    }
-
-    public int getItemCount() {
-        return itemCount;
-    }
-
-    public int getPrice() {
-        return price;
-    }
-   
+    public abstract DiscountType getDiscountType();
 }
+

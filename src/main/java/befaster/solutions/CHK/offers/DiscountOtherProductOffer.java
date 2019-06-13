@@ -13,31 +13,20 @@ import befaster.solutions.CHK.discounts.OtherItemDiscountPack;
  * @author robert.damian
  */
 public class DiscountOtherProductOffer extends SpecialOffer {
+    
+    private OtherItemDiscountPack suppliedDiscount;
+    
     public DiscountOtherProductOffer(int eligibleItemQuantity, 
-            SpecialOfferEvent generatedEvent) {
+            OtherItemDiscountPack suppliedDiscount) {
         super(eligibleItemQuantity);
+        this.suppliedDiscount = suppliedDiscount;
     }
 
     @Override
     public DiscountPack computeOfferFor(int itemCount) {
-        return new OtherItemDiscountPack(itemCount, itemCount);
-    }
-    
-    public static class SpecialOfferEvent {
-        private final String itemSKU;
-        private final int itemQuantity;
-        
-        public SpecialOfferEvent(String itemSKU, int itemQuantity) {
-            this.itemQuantity = itemQuantity;
-            this.itemSKU = itemSKU;
-        } 
-        
-        
-    }
-    
-    public interface OfferEventListener {
-        
+        return new OtherItemDiscountPack(suppliedDiscount);
     }
 }
+
 
 

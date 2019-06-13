@@ -26,4 +26,10 @@ public class PriceForItemDiscountPack extends DiscountPack {
     public int getPrice() {
         return price;
     }
+
+    @Override
+    public DiscountType getDiscountType() {
+        return DiscountType.PRICE_REDUCTION;
+    }
 }
+

@@ -9,7 +9,7 @@ package befaster.solutions.CHK.discounts;
  *
  * @author robert.damian
  */
-public class OtherItemDiscountPack {
+public class OtherItemDiscountPack extends DiscountPack {
     private final String itemSKU;
     private final int quantity;
     
@@ -29,4 +29,10 @@ public class OtherItemDiscountPack {
     public int getQuantity() {
         return quantity;
     }
+
+    @Override
+    public DiscountType getDiscountType() {
+        return DiscountType.OTHER_FREE;
+    }
 }
+
