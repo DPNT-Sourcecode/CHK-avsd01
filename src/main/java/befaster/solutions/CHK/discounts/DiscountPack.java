@@ -67,7 +67,3 @@ public abstract class DiscountPack {
         public void discountPackReceived(DiscountPack discountPack);
     }
 }
-
-
-
-

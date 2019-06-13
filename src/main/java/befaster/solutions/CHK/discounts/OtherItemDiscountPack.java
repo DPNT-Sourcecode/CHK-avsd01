@@ -34,4 +34,3 @@ public class OtherItemDiscountPack extends DiscountPack {
                         getTargetQuantity(), 0));
     }
 }
-

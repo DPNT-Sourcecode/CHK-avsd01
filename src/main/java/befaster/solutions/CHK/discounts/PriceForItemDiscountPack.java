@@ -40,4 +40,3 @@ public class PriceForItemDiscountPack extends DiscountPack {
                 new CheckoutItem("DISCOUNT", 1, price));
     }
 }
-
