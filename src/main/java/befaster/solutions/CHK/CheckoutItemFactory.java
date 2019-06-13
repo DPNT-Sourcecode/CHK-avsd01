@@ -93,7 +93,7 @@ public class CheckoutItemFactory {
             case "J":
                 return new CheckoutItem(itemSKU, 1, 60);
             case "K":
-                return new CheckoutItem(itemSKU, 1, 80, new PriceDiscountOffer(2, 150));
+                return new CheckoutItem(itemSKU, 1, 70, new PriceDiscountOffer(2, 150));
             case "L":
                 return new CheckoutItem(itemSKU, 1, 90);                
             case "M":
@@ -147,3 +147,4 @@ public class CheckoutItemFactory {
         return new CheckoutCart(currentItemState.values());
     }
 }
+
