@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  *
@@ -35,7 +36,10 @@ public class CheckoutCart implements
     
     public int getTotal() {
         computeOffers();
-        discountPackList.stream().forEach(d -> d.applyToCart(this));
+        discountPackList.stream()
+                .sorted((d1,d2) -> d2.simulateImpactOnCart(this) -
+                        d1.simulateImpactOnCart(this))
+                .forEach(d -> d.applyToCart(this));
         
         return cartItems.stream().mapToInt(CheckoutItem::getTotal).sum();
     }
@@ -71,3 +75,4 @@ public class CheckoutCart implements
         return new CheckoutCart(cartItems);
     }
 }
+
