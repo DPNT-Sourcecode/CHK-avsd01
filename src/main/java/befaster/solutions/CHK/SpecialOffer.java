@@ -24,5 +24,3 @@ public class SpecialOffer {
         return new DiscountPack(groups * eligibleQuantity, price * groups);
     }
 }
-
-

@@ -11,16 +11,23 @@ package befaster.solutions.CHK;
  */
 public class CheckoutItem {
     protected final int quantity;
-    protected final int price;
+    protected final int singleItemPrice;
     
-    public CheckoutItem(int quantity, int price) {
+    private final SpecialOffer availableOffer;
+    
+    public CheckoutItem(int quantity, int singleItemPrice, SpecialOffer availableOffer) {
         this.quantity = quantity;
-        this.price = price;
+        this.singleItemPrice = singleItemPrice;
+        this.availableOffer = availableOffer;
     }
     
     public int getTotal() {
-        return price * quantity;
+        if (availableOffer == null) {
+            return singleItemPrice * quantity;
+        }
+
+        DiscountPack discountPack = availableOffer.computeOfferFor(quantity);
+        return discountPack.getPrice() + 
+                (quantity - discountPack.getItemCount()) * singleItemPrice;
     }
 }
-
-

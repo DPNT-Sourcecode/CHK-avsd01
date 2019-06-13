@@ -17,4 +17,14 @@ public class DiscountPack {
         this.itemCount = itemCount;
         this.price = price;
     }
+
+    public int getItemCount() {
+        return itemCount;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+    
+    
 }
