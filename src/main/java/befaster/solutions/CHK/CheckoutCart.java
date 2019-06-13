@@ -42,7 +42,8 @@ public class CheckoutCart implements SpecialOffer.SpecialOfferReceiver{
 
     @Override
     public void specialOfferReceived(SpecialOffer offer) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        offerList.add(offer);
     }
 }
+
 
