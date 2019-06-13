@@ -29,7 +29,7 @@ public class CheckoutCart implements SpecialOffer.SpecialOfferReceiver{
     }
     
     public void computeOffers() {
-        cartItems.stream().forEach(action);
+        cartItems.stream().forEach(i -> i.computeAllOffers(this));
     }
     
     public int getTotal() {
@@ -45,3 +45,4 @@ public class CheckoutCart implements SpecialOffer.SpecialOfferReceiver{
         offerList.add(offer);
     }
 }
+
