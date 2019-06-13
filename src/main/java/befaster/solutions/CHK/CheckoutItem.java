@@ -30,4 +30,9 @@ public class CheckoutItem {
         return discountPack.getPrice() + 
                 (quantity - discountPack.getItemCount()) * singleItemPrice;
     }
+    
+    public CheckoutItem getIncreasedCopy() {
+        return new CheckoutItem(quantity + 1, singleItemPrice, availableOffer);
+    }
 }
+
