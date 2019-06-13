@@ -33,6 +33,7 @@ public class CheckoutCart implements
     
     public void computeOffers() {
         cartItems.stream().forEach(i -> i.computeAllOffers(this));
+        
     }
     
     public int getTotal() {
@@ -74,13 +75,7 @@ public class CheckoutCart implements
     
     private void handleReplacementWithSKUGroup(String skuGroup, int count, 
             CheckoutItem item) {
-        List<CheckoutItem> sortedMatchingList = Stream.of(skuGroup.split(""))
-                .map(sku -> getItemWithSKU(sku))
-                .filter(i -> i != null)
-                .sorted((i1, i2) -> 
-                        i2.getPriceForSingleItem() - 
-                        i1.getPriceForSingleItem())
-                .collect(Collectors.toList());
+        List<CheckoutItem> sortedMatchingList = getItemListForGroup(skuGroup);
         
         List<CheckoutItem> replacedList = new ArrayList<>();
         CheckoutItem partiallyReplacedItem = null;
@@ -107,6 +102,16 @@ public class CheckoutCart implements
         
     }
     
+    private List<CheckoutItem> getItemListForGroup(String skuGroup) {
+        return Stream.of(skuGroup.split(""))
+                .map(sku -> getItemWithSKU(sku))
+                .filter(i -> i != null)
+                .sorted((i1, i2) -> 
+                        i2.getPriceForSingleItem() - 
+                        i1.getPriceForSingleItem())
+                .collect(Collectors.toList());
+    }
+    
     public CheckoutItem getItemWithSKU(String sku) {
         return cartItems.stream().filter(i -> sku.equals(i.getItemSKU()))
                 .findAny().orElse(null);
@@ -123,4 +128,5 @@ public class CheckoutCart implements
         return new CheckoutCart(cartItems);
     }
 }
+
 
