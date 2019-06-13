@@ -6,6 +6,7 @@
 package befaster.solutions.CHK.discounts;
 
 import befaster.solutions.CHK.CheckoutCart;
+import befaster.solutions.CHK.CheckoutItem;
 
 /**
  *
@@ -40,7 +41,19 @@ public abstract class DiscountPack {
     }
     
     public abstract DiscountType getDiscountType();
-    public abstract void applyToCart(CheckoutCart cart);
+    protected abstract void applyToCart(CheckoutCart cart);
+    
+    public void applyToCartChecked(CheckoutCart cart) {
+        if (needsAtLastTarget == false) {
+            applyToCart(cart);
+            return ;
+        }
+        
+        CheckoutItem item = cart.getItemWithSKU(targetSKU);
+        if (item.getItemQuantity() >= targetQuantity) {
+            applyToCart(cart);
+        }
+    }
     
     public int simulateImpactOnCart(CheckoutCart cart) {
         CheckoutCart fullCopy = cart.createCopy();
@@ -54,6 +67,7 @@ public abstract class DiscountPack {
         public void discountPackReceived(DiscountPack discountPack);
     }
 }
+
 
 
 

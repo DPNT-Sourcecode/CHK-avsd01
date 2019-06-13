@@ -46,6 +46,10 @@ public class CheckoutItem {
         return itemSKU;
     }
     
+    public int getItemQuantity() {
+        return quantity;
+    }
+    
     public void computeAllOffers(DiscountPackReceiver offerReceiver) {
         computeAllOffers(offerReceiver, quantity);
     }
@@ -77,3 +81,4 @@ public class CheckoutItem {
                 singleItemPrice, availableOffers);
     }
 }
+
