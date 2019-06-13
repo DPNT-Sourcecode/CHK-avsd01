@@ -122,6 +122,13 @@ public class CheckoutSolutionTest {
         int result = new CheckoutSolution().checkout("XYZ");
         Assert.assertEquals(45, result);
     }
+    
+    @Test
+    public void test3ItemsAndOthers() {
+        int result = new CheckoutSolution().checkout("XYZST");
+        Assert.assertEquals(85, result);
+    }
 }
+
 
 

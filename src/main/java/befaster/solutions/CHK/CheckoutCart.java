@@ -6,6 +6,8 @@
 package befaster.solutions.CHK;
 
 import befaster.solutions.CHK.discounts.DiscountPack;
+import befaster.solutions.CHK.offers.PriceGroupDiscountOffer;
+import com.sun.jndi.url.iiop.iiopURLContext;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -34,6 +36,13 @@ public class CheckoutCart implements
     public void computeOffers() {
         cartItems.stream().forEach(i -> i.computeAllOffers(this));
         
+        String groupSKU = "STXYZ";
+        PriceGroupDiscountOffer groupOffer = new PriceGroupDiscountOffer(groupSKU, 3, 45);
+        
+        List<CheckoutItem> matchingItems = getItemListForGroup(groupSKU);
+        DiscountPack groupDiscount = groupOffer
+                .computeOfferFor(groupSKU, matchingItems.size());
+        discountPackList.add(groupDiscount);
     }
     
     public int getTotal() {
@@ -128,5 +137,6 @@ public class CheckoutCart implements
         return new CheckoutCart(cartItems);
     }
 }
+
 
 
