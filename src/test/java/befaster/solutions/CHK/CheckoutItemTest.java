@@ -16,15 +16,16 @@ import org.junit.Test;
 public class CheckoutItemTest {
     @Test
     public void testNormalItem() {
-        CheckoutItem item = new CheckoutItem(5, 40);
+        CheckoutItem item = new CheckoutItem("A", 5, 40);
         
         Assert.assertEquals(200, item.getTotal());
     }
     
     @Test
     public void testWithOffer() {
-        CheckoutItem item = new CheckoutItem(5, 40, new PriceDiscountOffer(2, 70));
+        CheckoutItem item = new CheckoutItem("B", 5, 40, new PriceDiscountOffer(2, 70));
         
         Assert.assertEquals(180, item.getTotal());
     }
 }
+

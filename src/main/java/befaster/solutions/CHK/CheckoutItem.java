@@ -69,8 +69,14 @@ public class CheckoutItem {
     }
     
     public CheckoutItem getIncreasedCopy() {
-        return new CheckoutItem(quantity + 1, singleItemPrice, availableOffers);
+        return new CheckoutItem(itemSKU, quantity + 1, singleItemPrice, availableOffers);
+    }
+    
+    public CheckoutItem getDecreasedCopy(int amount) {
+        return new CheckoutItem(itemSKU, quantity - amount, 
+                singleItemPrice, availableOffers);
     }
 }
+
 
 

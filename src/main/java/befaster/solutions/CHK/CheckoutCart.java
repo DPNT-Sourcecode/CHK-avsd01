@@ -44,7 +44,16 @@ public class CheckoutCart implements
     }
     
     public void replace(String itemSKU, int count, CheckoutItem item) {
+        CheckoutItem matchingItem = getItemWithSKU(itemSKU);
+        if (matchingItem == null) {
+            return ;
+        }
         
+        cartItems.remove(matchingItem);
+        matchingItem = matchingItem.getDecreasedCopy(count);
+        
+        cartItems.add(matchingItem);
+        cartItems.add(item);
     }
     
     private CheckoutItem getItemWithSKU(String sku) {
@@ -57,6 +66,7 @@ public class CheckoutCart implements
         discountPackList.add(discoutPack);
     }
 }
+
 
 
 
