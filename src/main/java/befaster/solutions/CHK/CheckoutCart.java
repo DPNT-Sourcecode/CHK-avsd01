@@ -39,7 +39,8 @@ public class CheckoutCart implements
         discountPackList.stream()
                 .sorted((d1,d2) -> d1.simulateImpactOnCart(this) -
                         d2.simulateImpactOnCart(this))
-                .forEach(d -> d.applyToCart(this));
+                .forEach(d -> 
+                        d.applyToCart(this));
         
         return cartItems.stream().mapToInt(CheckoutItem::getTotal).sum();
     }
@@ -79,5 +80,6 @@ public class CheckoutCart implements
         return new CheckoutCart(cartItems);
     }
 }
+
 
 
