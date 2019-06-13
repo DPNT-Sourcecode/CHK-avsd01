@@ -37,8 +37,8 @@ public class CheckoutCart implements
     public int getTotal() {
         computeOffers();
         discountPackList.stream()
-                .sorted((d1,d2) -> d1.simulateImpactOnCart(this) -
-                        d2.simulateImpactOnCart(this))
+                .sorted((d1,d2) -> d2.simulateImpactOnCart(this) -
+                        d1.simulateImpactOnCart(this))
                 .forEach(d -> 
                         d.applyToCart(this));
         
@@ -80,6 +80,7 @@ public class CheckoutCart implements
         return new CheckoutCart(cartItems);
     }
 }
+
 
 
 
