@@ -11,4 +11,11 @@ package befaster.solutions.CHK;
  */
 public class SpecialOffer {
     
+    protected int quantity;
+    protected int price;
+    
+    public SpecialOffer (int quantity, int price) {
+        
+    }
 }
+

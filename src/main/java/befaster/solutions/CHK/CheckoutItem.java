@@ -11,15 +11,16 @@ package befaster.solutions.CHK;
  */
 public class CheckoutItem {
     protected final int quantity;
-    protected final double price;
+    protected final int price;
     
-    public CheckoutItem(int quantity, double price) {
+    public CheckoutItem(int quantity, int price) {
         this.quantity = quantity;
         this.price = price;
     }
     
-    public double getTotal() {
+    public int getTotal() {
         return price * quantity;
     }
 }
+
 
