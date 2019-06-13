@@ -5,6 +5,8 @@
  */
 package befaster.solutions.CHK.discounts;
 
+import befaster.solutions.CHK.CheckoutCart;
+
 /**
  *
  * @author robert.damian
@@ -19,6 +21,9 @@ public abstract class DiscountPack {
     public interface DiscountPackReceiver {
         public void discountPackReceived(DiscountPack discountPack);
     }
+    
+    
 }
+
 
 
