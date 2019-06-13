@@ -18,10 +18,13 @@ public abstract class DiscountPack {
     
     private final String targetSKU;
     private final int targetQuantity;
+    private final boolean needsAtLastTarget;
     
-    public DiscountPack(String targetSKU, int targetQuantity) {
+    public DiscountPack(String targetSKU, int targetQuantity, 
+            boolean needsAtLeastTarget) {
         this.targetQuantity = targetQuantity;
         this.targetSKU = targetSKU;
+        this.needsAtLastTarget = needsAtLeastTarget;
     }
 
     public String getTargetSKU() {
@@ -30,6 +33,10 @@ public abstract class DiscountPack {
 
     public int getTargetQuantity() {
         return targetQuantity;
+    }
+
+    public boolean isNeedsAtLastTarget() {
+        return needsAtLastTarget;
     }
     
     public abstract DiscountType getDiscountType();
@@ -47,5 +54,6 @@ public abstract class DiscountPack {
         public void discountPackReceived(DiscountPack discountPack);
     }
 }
+
 
 

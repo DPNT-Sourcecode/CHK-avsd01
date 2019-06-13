@@ -17,7 +17,7 @@ public class PriceForItemDiscountPack extends DiscountPack {
     private final int price;
     
     public PriceForItemDiscountPack(String targetSKU, int targetCount, int price) {
-        super(targetSKU, targetCount);
+        super(targetSKU, targetCount, true);
         this.price = price;
     }
 
@@ -40,3 +40,4 @@ public class PriceForItemDiscountPack extends DiscountPack {
                 new CheckoutItem("DISCOUNT", 1, price));
     }
 }
+

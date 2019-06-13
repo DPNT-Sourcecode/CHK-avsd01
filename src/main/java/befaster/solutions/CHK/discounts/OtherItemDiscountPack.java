@@ -15,7 +15,7 @@ import befaster.solutions.CHK.CheckoutItem;
 public class OtherItemDiscountPack extends DiscountPack {
     
     public OtherItemDiscountPack(String itemSKU, int quantity) {
-        super(itemSKU, quantity);
+        super(itemSKU, quantity, false);
     }
     
     public OtherItemDiscountPack(OtherItemDiscountPack pack, int offersCount) {
@@ -34,3 +34,4 @@ public class OtherItemDiscountPack extends DiscountPack {
                         getTargetQuantity(), 0));
     }
 }
+
