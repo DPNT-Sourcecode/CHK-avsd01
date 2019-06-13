@@ -34,6 +34,7 @@ public abstract class DiscountPack {
     
     public abstract DiscountType getDiscountType();
     public abstract void applyToCart(CheckoutCart cart);
+    public abstract int simulateImpactOnCart(CheckoutCart cart);
     
     public interface DiscountPackReceiver {
         public void discountPackReceived(DiscountPack discountPack);

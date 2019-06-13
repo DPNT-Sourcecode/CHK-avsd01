@@ -28,4 +28,3 @@ public class OtherFreeProductOffer extends SpecialOffer {
                 itemCount / eligibleQuantity);
     }
 }
-

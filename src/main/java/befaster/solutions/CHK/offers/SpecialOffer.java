@@ -38,4 +38,3 @@ public abstract class SpecialOffer implements Comparable<SpecialOffer>{
     }
     
 }
-

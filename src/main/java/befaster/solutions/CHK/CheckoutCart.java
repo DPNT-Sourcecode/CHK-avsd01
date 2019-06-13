@@ -66,5 +66,8 @@ public class CheckoutCart implements
     public void discountPackReceived(DiscountPack discoutPack) {
         discountPackList.add(discoutPack);
     }
+    
+    public CheckoutCart createCopy() {
+        return new CheckoutCart(cartItems);
+    }
 }
-
