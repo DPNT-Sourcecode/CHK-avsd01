@@ -10,8 +10,8 @@ package befaster.solutions.CHK;
  * @author robert.damian
  */
 public class CheckoutItem {
-    private final int quantity;
-    private final double price;
+    protected final int quantity;
+    protected final double price;
     
     public CheckoutItem(int quantity, double price) {
         this.quantity = quantity;
@@ -22,3 +22,4 @@ public class CheckoutItem {
         return price * quantity;
     }
 }
+
