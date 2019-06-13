@@ -11,9 +11,10 @@ package befaster.solutions.CHK.discounts;
  */
 public class GroupDiscountPack extends PriceForItemDiscountPack{
 
-    public GroupDiscountPack(String targetSKU, int targetQuantity) {
-        super(targetSKU, targetQuantity);
+    public GroupDiscountPack(String targetSKU, int targetQuantity, int price) {
+        super(targetSKU, targetQuantity, price);
     }
     
 }
+
 
