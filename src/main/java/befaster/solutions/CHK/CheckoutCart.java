@@ -76,7 +76,9 @@ public class CheckoutCart implements
             CheckoutItem item) {
         List<CheckoutItem> sortedMatchingList = Stream.of(skuGroup.split(""))
                 .map(sku -> getItemWithSKU(sku))
-                .sorted((i1, i2) -> i2.getPriceForSingleItem() - 
+                .filter(i -> i != null)
+                .sorted((i1, i2) -> 
+                        i2.getPriceForSingleItem() - 
                         i1.getPriceForSingleItem())
                 .collect(Collectors.toList());
         
@@ -121,3 +123,4 @@ public class CheckoutCart implements
         return new CheckoutCart(cartItems);
     }
 }
+
