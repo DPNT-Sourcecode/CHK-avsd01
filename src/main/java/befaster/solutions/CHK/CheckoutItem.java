@@ -35,10 +35,6 @@ public class CheckoutItem {
     }
     
     private int getTotal(int quantity) {
-        if (availableOffer == null) {
-            return singleItemPrice * quantity;
-        }
-        
         SpecialOffer bestOffer = availableOffers.stream()
                 .filter(o -> o.appliesTo(quantity))
                 .sorted((o1, o2) -> o1.computeOfferFor(quantity).getPrice() - 
@@ -49,14 +45,12 @@ public class CheckoutItem {
             return quantity * singleItemPrice;
         }
         
-        DiscountPack discountPack = availableOffer.computeOfferFor(quantity);
-        return discountPack.getPrice() + 
-                (quantity - discountPack.getItemCount()) * singleItemPrice;
+        DiscountPack discountPack = bestOffer.computeOfferFor(quantity);
+        return discountPack.getPrice() + getTotal(quantity - 
+                discountPack.getItemCount());
     }
     
     public CheckoutItem getIncreasedCopy() {
         return new CheckoutItem(quantity + 1, singleItemPrice, availableOffers);
     }
 }
-
-

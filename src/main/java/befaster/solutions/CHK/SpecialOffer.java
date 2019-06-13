@@ -28,4 +28,3 @@ public class SpecialOffer {
         return quantity >= eligibleQuantity;
     }
 }
-

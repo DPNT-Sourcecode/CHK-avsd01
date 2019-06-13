@@ -18,5 +18,3 @@ public class CheckoutSolution {
         return resultCart.getTotal();
     }
 }
-
-
