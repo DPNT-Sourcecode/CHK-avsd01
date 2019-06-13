@@ -52,8 +52,8 @@ public class CheckoutSolutionTest {
     
     @Test
     public void testLowerCaseCart() {
-        int result = new CheckoutSolution().checkout("abcd");
-        Assert.assertEquals(115, result);
+        int result = new CheckoutSolution().checkout("aBCD");
+        Assert.assertEquals(-1, result);
     }
     
     @Test
@@ -62,6 +62,7 @@ public class CheckoutSolutionTest {
         Assert.assertEquals(-1, result);
     }
 }
+
 
 
 

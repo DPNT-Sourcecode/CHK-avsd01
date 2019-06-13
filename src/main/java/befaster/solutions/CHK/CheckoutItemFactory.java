@@ -60,7 +60,6 @@ public class CheckoutItemFactory {
         if ("".equals(itemSKU)) {
             return new CheckoutItem(0, 0);
         }
-        itemSKU = itemSKU.toUpperCase();
         
         CheckoutItem newItem = getItemFor(itemSKU);
         currentItemState.put(itemSKU, newItem);
@@ -71,4 +70,5 @@ public class CheckoutItemFactory {
         return new CheckoutCart(currentItemState.values());
     }
 }
+
 
