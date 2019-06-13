@@ -83,8 +83,9 @@ public class CheckoutSolutionTest {
     
     @Test
     public void test8A() {
-        int result = new CheckoutSolution().checkout("AAAAAAA");
-        Assert.assertEquals(200, result);
+        int result = new CheckoutSolution().checkout("AAAAAAAA");
+        Assert.assertEquals(330, result);
     }
 }
+
 
