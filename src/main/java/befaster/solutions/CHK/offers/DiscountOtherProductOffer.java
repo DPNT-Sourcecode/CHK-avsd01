@@ -5,16 +5,22 @@
  */
 package befaster.solutions.CHK.offers;
 
+import befaster.solutions.CHK.discounts.DiscountPack;
+
 /**
  *
  * @author robert.damian
  */
 public class DiscountOtherProductOffer extends SpecialOffer {
-    public DiscountOtherProductOffer(int itemCount, SpecialOfferEvent generatedEvent) {
-        
+    public DiscountOtherProductOffer(int eligibleItemQuantity, 
+            SpecialOfferEvent generatedEvent) {
+        super(eligibleItemQuantity);
     }
-    
-    
+
+    @Override
+    public DiscountPack computeOfferFor(int itemCount) {
+        return new DiscountPack(itemCount, itemCount);
+    }
     
     public static class SpecialOfferEvent {
         private final String itemSKU;
@@ -32,3 +38,4 @@ public class DiscountOtherProductOffer extends SpecialOffer {
         
     }
 }
+

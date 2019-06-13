@@ -5,7 +5,8 @@
  */
 package befaster.solutions.CHK.offers;
 
-import befaster.solutions.CHK.DiscountPack;
+import befaster.solutions.CHK.discounts.DiscountPack;
+import befaster.solutions.CHK.discounts.PriceForItemDiscountPack;
 
 /**
  *
@@ -23,10 +24,12 @@ public class PriceDiscountOffer {
     
     public DiscountPack computeOfferFor(int itemCount) {
         int groups = itemCount / eligibleQuantity;
-        return new DiscountPack(groups * eligibleQuantity, price * groups);
+        return new PriceForItemDiscountPack(groups * eligibleQuantity, 
+                price * groups);
     }
     
     public boolean appliesTo(int quantity) {
         return quantity >= eligibleQuantity;
     }
 }
+

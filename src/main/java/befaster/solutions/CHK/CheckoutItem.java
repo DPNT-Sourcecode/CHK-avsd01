@@ -5,6 +5,7 @@
  */
 package befaster.solutions.CHK;
 
+import befaster.solutions.CHK.discounts.DiscountPack;
 import befaster.solutions.CHK.offers.PriceDiscountOffer;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -55,4 +56,5 @@ public class CheckoutItem {
         return new CheckoutItem(quantity + 1, singleItemPrice, availableOffers);
     }
 }
+
 

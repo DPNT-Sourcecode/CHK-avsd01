@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package befaster.solutions.CHK;
+package befaster.solutions.CHK.discounts;
 
 /**
  *
@@ -25,6 +25,5 @@ public class DiscountPack {
     public int getPrice() {
         return price;
     }
-    
-    
+   
 }

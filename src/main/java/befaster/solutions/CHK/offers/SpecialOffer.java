@@ -5,7 +5,7 @@
  */
 package befaster.solutions.CHK.offers;
 
-import befaster.solutions.CHK.DiscountPack;
+import befaster.solutions.CHK.discounts.DiscountPack;
 
 /**
  *
@@ -24,3 +24,4 @@ public abstract class SpecialOffer {
         return quantity >= eligibleQuantity;
     }
 }
+
