@@ -100,6 +100,7 @@ public class CheckoutCart implements
             }
             
             partiallyReplacedItem = i;
+            break;
         }
         
         if (partiallyReplacedItem == null) {
@@ -140,3 +141,4 @@ public class CheckoutCart implements
         return new CheckoutCart(cartItems);
     }
 }
+

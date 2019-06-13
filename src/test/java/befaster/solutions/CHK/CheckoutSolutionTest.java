@@ -132,7 +132,7 @@ public class CheckoutSolutionTest {
     @Test
     public void test3ItemsAndOthers() {
         int result = new CheckoutSolution().checkout("XYZST");
-        Assert.assertEquals(85, result);
+        Assert.assertEquals(82, result);
     }
     
     @Test
@@ -165,3 +165,4 @@ public class CheckoutSolutionTest {
         Assert.assertEquals(62, result);
     }
 }
+
