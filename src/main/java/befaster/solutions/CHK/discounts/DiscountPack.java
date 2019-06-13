@@ -38,11 +38,4 @@ public abstract class DiscountPack {
     public interface DiscountPackReceiver {
         public void discountPackReceived(DiscountPack discountPack);
     }
-    
-    
 }
-
-
-
-
-

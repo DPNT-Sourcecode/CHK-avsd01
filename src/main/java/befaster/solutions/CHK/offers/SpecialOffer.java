@@ -18,7 +18,7 @@ public abstract class SpecialOffer implements Comparable<SpecialOffer>{
         this.eligibleQuantity = eligibleQuantity;
     }
     
-    public abstract DiscountPack computeOfferFor(int itemCount);
+    public abstract DiscountPack computeOfferFor(String itemSKU, int itemCount);
     
     public boolean appliesTo(int quantity) {
         return quantity >= eligibleQuantity;

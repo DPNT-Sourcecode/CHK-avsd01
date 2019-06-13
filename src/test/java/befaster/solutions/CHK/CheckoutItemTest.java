@@ -28,4 +28,3 @@ public class CheckoutItemTest {
         Assert.assertEquals(180, item.getTotal());
     }
 }
-

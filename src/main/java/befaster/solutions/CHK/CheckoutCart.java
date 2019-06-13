@@ -66,8 +66,3 @@ public class CheckoutCart implements
         discountPackList.add(discoutPack);
     }
 }
-
-
-
-
-

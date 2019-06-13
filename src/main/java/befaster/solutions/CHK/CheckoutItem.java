@@ -60,9 +60,8 @@ public class CheckoutItem {
         if (bestOffer == null) {
             return ;
         }
-        bestOffer.computeOfferFor(leftQuantity);
         discountPackReceiver.discountPackReceived(bestOffer.computeOfferFor(
-                leftQuantity));
+                itemSKU, leftQuantity));
         leftQuantity = leftQuantity - 
                 bestOffer.getQuantityConsumedByOffer(leftQuantity);
         computeAllOffers(discountPackReceiver, leftQuantity);
@@ -77,6 +76,3 @@ public class CheckoutItem {
                 singleItemPrice, availableOffers);
     }
 }
-
-
-

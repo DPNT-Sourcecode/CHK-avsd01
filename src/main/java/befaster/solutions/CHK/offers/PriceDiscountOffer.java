@@ -22,9 +22,9 @@ public class PriceDiscountOffer extends SpecialOffer{
     }
     
     @Override
-    public DiscountPack computeOfferFor(int itemCount) {
+    public DiscountPack computeOfferFor(String itemSKU, int itemCount) {
         int groups = itemCount / eligibleQuantity;
-        return new PriceForItemDiscountPack(groups * eligibleQuantity, 
+        return new PriceForItemDiscountPack(itemSKU, groups * eligibleQuantity, 
                 price * groups);
     }
 }
