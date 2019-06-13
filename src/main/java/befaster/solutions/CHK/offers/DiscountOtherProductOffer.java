@@ -6,6 +6,7 @@
 package befaster.solutions.CHK.offers;
 
 import befaster.solutions.CHK.discounts.DiscountPack;
+import befaster.solutions.CHK.discounts.OtherItemDiscountPack;
 
 /**
  *
@@ -19,7 +20,7 @@ public class DiscountOtherProductOffer extends SpecialOffer {
 
     @Override
     public DiscountPack computeOfferFor(int itemCount) {
-        return new DiscountPack(itemCount, itemCount);
+        return new OtherItemDiscountPack(itemCount, itemCount);
     }
     
     public static class SpecialOfferEvent {
@@ -38,4 +39,5 @@ public class DiscountOtherProductOffer extends SpecialOffer {
         
     }
 }
+
 
