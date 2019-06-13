@@ -5,6 +5,8 @@
  */
 package befaster.solutions.CHK;
 
+import java.util.Map;
+
 /**
  *
  * @author robert.damian
@@ -12,9 +14,14 @@ package befaster.solutions.CHK;
 public class CheckoutItemFactory {
     
     private CheckoutItemFactory INSTANCE;
+    private Map<String, CheckoutItem> currentItemState;
     
     private CheckoutItemFactory() {
-        
+        resetFactory();
+    }
+    
+    public final void resetFactory() {
+        currentItemState = new HashMap<>();
     }
     
     public CheckoutItemFactory getInstance() {
@@ -29,3 +36,4 @@ public class CheckoutItemFactory {
         
     }
 }
+
