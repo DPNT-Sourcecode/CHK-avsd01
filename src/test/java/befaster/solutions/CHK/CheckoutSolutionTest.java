@@ -76,6 +76,24 @@ public class CheckoutSolutionTest {
     }
     
     @Test
+    public void testUsefulE2() {
+        int result = new CheckoutSolution().checkout("EEEEB");
+        Assert.assertEquals(160, result);
+    }
+    
+    @Test
+    public void testUsefulE3() {
+        int result = new CheckoutSolution().checkout("EEEB");
+        Assert.assertEquals(120, result);
+    }
+    
+    @Test
+    public void testUsefulE4() {
+        int result = new CheckoutSolution().checkout("EEBB");
+        Assert.assertEquals(110, result);
+    }
+    
+    @Test
     public void test5A() {
         int result = new CheckoutSolution().checkout("AAAAA");
         Assert.assertEquals(200, result);
@@ -87,5 +105,6 @@ public class CheckoutSolutionTest {
         Assert.assertEquals(330, result);
     }
 }
+
 
 
