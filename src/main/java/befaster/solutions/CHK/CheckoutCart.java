@@ -78,6 +78,26 @@ public class CheckoutCart implements
                 .sorted((i1, i2) -> i2.getPriceForSingleItem() - 
                         i1.getPriceForSingleItem())
                 .collect(Collectors.toList());
+        
+        List<CheckoutItem> replacedList = new ArrayList<>();
+        CheckoutItem partiallyReplacedItem = null;
+        
+        for (CheckoutItem i : sortedMatchingList) {
+            if (i.getItemQuantity() < count) {
+                replacedList.add(i);
+                count -= i.getItemQuantity();
+                continue;
+            }
+            
+            partiallyReplacedItem = i;
+        }
+        
+        cartItems.removeAll(replacedList);
+        cartItems.remove(partiallyReplacedItem);
+        partiallyReplacedItem = partiallyReplacedItem.getDecreasedCopy(count);
+        cartItems.add(partiallyReplacedItem);
+        cartItems.add(item);
+        
     }
     
     public CheckoutItem getItemWithSKU(String sku) {
@@ -96,6 +116,7 @@ public class CheckoutCart implements
         return new CheckoutCart(cartItems);
     }
 }
+
 
 
 
