@@ -6,6 +6,7 @@
 package befaster.solutions.CHK.discounts;
 
 import befaster.solutions.CHK.CheckoutCart;
+import befaster.solutions.CHK.CheckoutItem;
 
 /**
  *
@@ -28,6 +29,9 @@ public class OtherItemDiscountPack extends DiscountPack {
 
     @Override
     public void applyToCart(CheckoutCart cart) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        cart.replace(getTargetSKU(), getTargetQuantity(), 
+                new CheckoutItem("Discount " + getTargetSKU(), 
+                        getTargetQuantity(), 0));
     }
 }
+

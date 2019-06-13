@@ -6,6 +6,7 @@
 package befaster.solutions.CHK.discounts;
 
 import befaster.solutions.CHK.CheckoutCart;
+import befaster.solutions.CHK.CheckoutItem;
 
 /**
  *
@@ -35,6 +36,8 @@ public class PriceForItemDiscountPack extends DiscountPack {
 
     @Override
     public void applyToCart(CheckoutCart cart) {
-        
+        cart.replace(getTargetSKU(), getTargetQuantity(), 
+                new CheckoutItem("DISCOUNT", 1, price));
     }
 }
+
