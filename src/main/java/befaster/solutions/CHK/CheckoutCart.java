@@ -56,6 +56,7 @@ public class CheckoutCart implements
     
     public void replace(String itemSKU, int count, CheckoutItem item) {
         if (itemSKU.length() > 1) {
+            handleReplacementWithSKUGroup(itemSKU, count, item);
             return ; 
         }
             
@@ -92,6 +93,10 @@ public class CheckoutCart implements
             partiallyReplacedItem = i;
         }
         
+        if (partiallyReplacedItem == null) {
+            return ;
+        }
+        
         cartItems.removeAll(replacedList);
         cartItems.remove(partiallyReplacedItem);
         partiallyReplacedItem = partiallyReplacedItem.getDecreasedCopy(count);
@@ -116,6 +121,7 @@ public class CheckoutCart implements
         return new CheckoutCart(cartItems);
     }
 }
+
 
 
 
