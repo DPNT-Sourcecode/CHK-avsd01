@@ -11,11 +11,12 @@ public class CheckoutSolution {
     
     public Integer checkoutUnsafe(String unsafeSkus) {
         CheckoutItemFactory factory = new CheckoutItemFactory();
-        for(String itemSKU : unsafeSkus.split(" ")) {
+        for(String itemSKU : unsafeSkus.split("")) {
             factory.feedNewItem(itemSKU);
         }
         CheckoutCart resultCart = factory.exportCart();
         return resultCart.getTotal();
     }
 }
+
 

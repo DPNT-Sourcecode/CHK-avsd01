@@ -28,19 +28,19 @@ public class CheckoutSolutionTest {
     
     @Test
     public void testSimpleCart() {
-        int result = new CheckoutSolution().checkout("A B C D");
+        int result = new CheckoutSolution().checkout("ABCD");
         Assert.assertEquals(115, result);
     }
     
     @Test
     public void testCartWithOfferA() {
-        int result = new CheckoutSolution().checkout("A A A B C D");
+        int result = new CheckoutSolution().checkout("AAABCD");
         Assert.assertEquals(195, result);
     }
     
     @Test
     public void testCartWithOfferB() {
-        int result = new CheckoutSolution().checkout("A B B C D");
+        int result = new CheckoutSolution().checkout("ABBCD");
         Assert.assertEquals(130, result);
     }
     
@@ -52,7 +52,7 @@ public class CheckoutSolutionTest {
     
     @Test
     public void testLowerCaseCart() {
-        int result = new CheckoutSolution().checkout("a b c d");
+        int result = new CheckoutSolution().checkout("abcd");
         Assert.assertEquals(115, result);
     }
     
@@ -62,5 +62,6 @@ public class CheckoutSolutionTest {
         Assert.assertEquals(-1, result);
     }
 }
+
 
 
