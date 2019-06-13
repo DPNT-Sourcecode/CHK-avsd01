@@ -12,11 +12,11 @@ import befaster.solutions.CHK.discounts.OtherItemDiscountPack;
  *
  * @author robert.damian
  */
-public class DiscountOtherProductOffer extends SpecialOffer {
+public class OtherFreeProductOffer extends SpecialOffer {
     
     private OtherItemDiscountPack suppliedDiscount;
     
-    public DiscountOtherProductOffer(int eligibleItemQuantity, 
+    public OtherFreeProductOffer(int eligibleItemQuantity, 
             OtherItemDiscountPack suppliedDiscount) {
         super(eligibleItemQuantity);
         this.suppliedDiscount = suppliedDiscount;
@@ -27,6 +27,3 @@ public class DiscountOtherProductOffer extends SpecialOffer {
         return new OtherItemDiscountPack(suppliedDiscount);
     }
 }
-
-
-

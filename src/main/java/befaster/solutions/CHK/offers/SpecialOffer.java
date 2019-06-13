@@ -11,7 +11,7 @@ import befaster.solutions.CHK.discounts.DiscountPack;
  *
  * @author robert.damian
  */
-public abstract class SpecialOffer {
+public abstract class SpecialOffer implements Comparable<SpecialOffer>{
     protected final int eligibleQuantity;
     
     public SpecialOffer(int eligibleQuantity) {
@@ -27,6 +27,14 @@ public abstract class SpecialOffer {
     public interface SpecialOfferReceiver {
         public void specialOfferReceived(SpecialOffer offer);
     }
+
+    @Override
+    public int compareTo(SpecialOffer o) {
+        return eligibleQuantity - o.eligibleQuantity;
+    }
+    
+    
 }
+
 
 
