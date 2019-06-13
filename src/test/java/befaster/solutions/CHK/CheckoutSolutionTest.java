@@ -49,4 +49,11 @@ public class CheckoutSolutionTest {
         int result = new CheckoutSolution().checkout("");
         Assert.assertEquals(0, result);
     }
+    
+    @Test
+    public void testLowerCaseCart() {
+        int result = new CheckoutSolution().checkout("a b c d");
+        Assert.assertEquals(115, result);
+    }
 }
+
