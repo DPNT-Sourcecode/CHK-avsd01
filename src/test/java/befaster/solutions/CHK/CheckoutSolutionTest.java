@@ -110,4 +110,11 @@ public class CheckoutSolutionTest {
         int result = new CheckoutSolution().checkout("FFF");
         Assert.assertEquals(20, result);
     }
+    
+    @Test
+    public void testSimpleZ() {
+        int result = new CheckoutSolution().checkout("ZZZ");
+        Assert.assertEquals(45, result);
+    }
 }
+

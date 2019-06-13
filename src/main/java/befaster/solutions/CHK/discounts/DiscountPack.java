@@ -44,6 +44,12 @@ public abstract class DiscountPack {
     protected abstract void applyToCart(CheckoutCart cart);
     
     public void applyToCartChecked(CheckoutCart cart) {
+        if (targetSKU.length() > 1) {
+            // obeys to special rules
+            applyToCart(cart);
+            return ;
+        }
+        
         if (needsAtLastTarget == false) {
             applyToCart(cart);
             return ;
@@ -67,3 +73,4 @@ public abstract class DiscountPack {
         public void discountPackReceived(DiscountPack discountPack);
     }
 }
+
