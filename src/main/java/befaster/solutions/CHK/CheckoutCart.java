@@ -53,6 +53,10 @@ public class CheckoutCart implements
     }
     
     public void replace(String itemSKU, int count, CheckoutItem item) {
+        if (itemSKU.length() > 1) {
+            return ; 
+        }
+            
         CheckoutItem matchingItem = getItemWithSKU(itemSKU);
         if (matchingItem == null) {
             return ;
@@ -65,10 +69,17 @@ public class CheckoutCart implements
         cartItems.add(item);
     }
     
+    private void handleReplacementWithSKUGroup(String skuGroup, int count, 
+            CheckoutItem item) {
+        
+    }
+    
     public CheckoutItem getItemWithSKU(String sku) {
         return cartItems.stream().filter(i -> sku.equals(i.getItemSKU()))
                 .findAny().orElse(null);
     }
+    
+    
 
     @Override
     public void discountPackReceived(DiscountPack discoutPack) {
@@ -79,4 +90,5 @@ public class CheckoutCart implements
         return new CheckoutCart(cartItems);
     }
 }
+
 
