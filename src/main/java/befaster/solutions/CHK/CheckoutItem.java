@@ -31,10 +31,23 @@ public class CheckoutItem {
     }
     
     public int getTotal() {
+        return getTotal(quantity);
+    }
+    
+    private int getTotal(int quantity) {
         if (availableOffer == null) {
             return singleItemPrice * quantity;
         }
-
+        
+        SpecialOffer bestOffer = availableOffers.stream()
+                .filter(o -> o.appliesTo(quantity))
+                .sorted((o1, o2) -> o1.computeOfferFor(quantity).getPrice() - 
+                        o2.computeOfferFor(quantity).getPrice())
+                .findFirst()
+                .orElse(null);
+        if (bestOffer == null) {
+            return quantity * singleItemPrice;
+        }
         
         DiscountPack discountPack = availableOffer.computeOfferFor(quantity);
         return discountPack.getPrice() + 
@@ -45,4 +58,5 @@ public class CheckoutItem {
         return new CheckoutItem(quantity + 1, singleItemPrice, availableOffers);
     }
 }
+
 
