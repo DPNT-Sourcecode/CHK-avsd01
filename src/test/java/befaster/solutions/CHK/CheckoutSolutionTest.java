@@ -140,7 +140,32 @@ public class CheckoutSolutionTest {
         int result = new CheckoutSolution().checkout("XYZSTX");
         Assert.assertEquals(90, result);
     }
+    /**
+     * 
+        - {"method":"checkout","params":["ZZZS"],"id":"CHK_R5_144"}, expected: 65, got: 66
+        - {"method":"checkout","params":["STXS"],"id":"CHK_R5_145"}, expected: 62, got: 65
+        - {"method":"checkout","params":["STXZ"],"id":"CHK_R5_146"}, expected: 62, got: 65
+     */
+    
+    @Test
+    public void testSpecial4Items() {
+        int result = new CheckoutSolution().checkout("ZZZS");
+        Assert.assertEquals(65, result);
+    }
+    
+    @Test
+    public void testSpecial4Items2() {
+        int result = new CheckoutSolution().checkout("STXS");
+        Assert.assertEquals(62, result);
+    }
+    
+    @Test
+    public void testSpecial4Items3() {
+        int result = new CheckoutSolution().checkout("STXZ");
+        Assert.assertEquals(62, result);
+    }
 }
+
 
 
 
