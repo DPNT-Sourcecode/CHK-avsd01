@@ -40,8 +40,11 @@ public class CheckoutCart implements
         PriceGroupDiscountOffer groupOffer = new PriceGroupDiscountOffer(groupSKU, 3, 45);
         
         List<CheckoutItem> matchingItems = getItemListForGroup(groupSKU);
+        int matchingItemsAbsoluteCount = matchingItems.stream()
+                .mapToInt(CheckoutItem::getItemQuantity)
+                .sum();
         DiscountPack groupDiscount = groupOffer
-                .computeOfferFor(groupSKU, matchingItems.size());
+                .computeOfferFor(groupSKU, matchingItemsAbsoluteCount);
         discountPackList.add(groupDiscount);
     }
     
@@ -137,6 +140,7 @@ public class CheckoutCart implements
         return new CheckoutCart(cartItems);
     }
 }
+
 
 
 
