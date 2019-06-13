@@ -24,6 +24,10 @@ public abstract class SpecialOffer implements Comparable<SpecialOffer>{
         return quantity >= eligibleQuantity;
     }
     
+    public int getQuantityConsumedByOffer(int quantity) {
+        return (quantity / eligibleQuantity) * eligibleQuantity;
+    }
+    
     public interface SpecialOfferReceiver {
         public void specialOfferReceived(SpecialOffer offer);
     }
@@ -33,8 +37,8 @@ public abstract class SpecialOffer implements Comparable<SpecialOffer>{
         return eligibleQuantity - o.eligibleQuantity;
     }
     
-    
 }
+
 
 
 

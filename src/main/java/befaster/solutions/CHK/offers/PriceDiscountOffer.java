@@ -12,7 +12,7 @@ import befaster.solutions.CHK.discounts.PriceForItemDiscountPack;
  *
  * @author robert.damian
  */
-public class PriceDiscountOffer {
+public class PriceDiscountOffer extends SpecialOffer{
     
     protected int eligibleQuantity;
     protected int price;
@@ -32,4 +32,5 @@ public class PriceDiscountOffer {
         return quantity >= eligibleQuantity;
     }
 }
+
 

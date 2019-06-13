@@ -6,7 +6,7 @@
 package befaster.solutions.CHK;
 
 import befaster.solutions.CHK.discounts.DiscountPack;
-import befaster.solutions.CHK.offers.PriceDiscountOffer;
+import befaster.solutions.CHK.offers.SpecialOffer;
 import befaster.solutions.CHK.offers.SpecialOffer.SpecialOfferReceiver;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -21,13 +21,13 @@ public class CheckoutItem {
     protected final int quantity;
     protected final int singleItemPrice;
     
-    private final List<PriceDiscountOffer> availableOffers;
+    private final List<SpecialOffer> availableOffers;
         
-    public CheckoutItem(int quantity, int singleItemPrice, PriceDiscountOffer... availableOffers) {
+    public CheckoutItem(int quantity, int singleItemPrice, SpecialOffer... availableOffers) {
         this(quantity, singleItemPrice, Arrays.asList(availableOffers));
     }
     
-    public CheckoutItem(int quantity, int singleItemPrice, Collection<PriceDiscountOffer> availableOffers) {
+    public CheckoutItem(int quantity, int singleItemPrice, Collection<SpecialOffer> availableOffers) {
         this.quantity = quantity;
         this.singleItemPrice = singleItemPrice;
         this.availableOffers = new ArrayList<>(availableOffers);
@@ -38,12 +38,6 @@ public class CheckoutItem {
     }
     
     private int getTotal(int quantity) {
-        PriceDiscountOffer bestOffer = availableOffers.stream()
-                .filter(o -> o.appliesTo(quantity))
-                .sorted((o1, o2) -> o1.computeOfferFor(quantity).getPrice() - 
-                        o2.computeOfferFor(quantity).getPrice())
-                .findFirst()
-                .orElse(null);
         if (bestOffer == null) {
             return quantity * singleItemPrice;
         }
@@ -58,13 +52,24 @@ public class CheckoutItem {
     }
     
     public void computeAllOffers(SpecialOfferReceiver offerReceiver, int leftQuantity) {
+        SpecialOffer bestOffer = availableOffers.stream()
+                .filter(o -> o.appliesTo(quantity))
+                .sorted()
+                .findFirst()
+                .orElse(null);
+        if (bestOffer == null) {
+            return ;
+        }
         
+        offerReceiver.specialOfferReceived(bestOffer);
+        computeAllOffers(offerReceiver);
     }
     
     public CheckoutItem getIncreasedCopy() {
         return new CheckoutItem(quantity + 1, singleItemPrice, availableOffers);
     }
 }
+
 
 
 
