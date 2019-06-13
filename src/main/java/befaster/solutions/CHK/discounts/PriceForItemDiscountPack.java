@@ -32,4 +32,3 @@ public class PriceForItemDiscountPack extends DiscountPack {
         return DiscountType.PRICE_REDUCTION;
     }
 }
-

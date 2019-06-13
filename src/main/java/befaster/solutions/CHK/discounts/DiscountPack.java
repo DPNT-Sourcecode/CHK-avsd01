@@ -16,4 +16,3 @@ public abstract class DiscountPack {
     
     public abstract DiscountType getDiscountType();
 }
-

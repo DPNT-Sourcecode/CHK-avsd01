@@ -5,7 +5,6 @@
  */
 package befaster.solutions.CHK;
 
-import befaster.solutions.CHK.discounts.DiscountPack;
 import befaster.solutions.CHK.offers.SpecialOffer;
 import befaster.solutions.CHK.offers.SpecialOffer.SpecialOfferReceiver;
 import java.util.ArrayList;
@@ -38,13 +37,7 @@ public class CheckoutItem {
     }
     
     private int getTotal(int quantity) {
-        if (bestOffer == null) {
-            return quantity * singleItemPrice;
-        }
-        
-        DiscountPack discountPack = bestOffer.computeOfferFor(quantity);
-        return discountPack.getPrice() + getTotal(quantity - 
-                discountPack.getItemCount());
+        return quantity * singleItemPrice;
     }
     
     public void computeAllOffers(SpecialOfferReceiver offerReceiver) {
@@ -62,14 +55,12 @@ public class CheckoutItem {
         }
         
         offerReceiver.specialOfferReceived(bestOffer);
-        computeAllOffers(offerReceiver);
+        leftQuantity = leftQuantity - 
+                bestOffer.getQuantityConsumedByOffer(leftQuantity);
+        computeAllOffers(offerReceiver, leftQuantity);
     }
     
     public CheckoutItem getIncreasedCopy() {
         return new CheckoutItem(quantity + 1, singleItemPrice, availableOffers);
     }
 }
-
-
-
-

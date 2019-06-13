@@ -45,6 +45,3 @@ public class CheckoutCart implements SpecialOffer.SpecialOfferReceiver{
         offerList.add(offer);
     }
 }
-
-
-

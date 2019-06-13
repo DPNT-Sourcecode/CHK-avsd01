@@ -71,4 +71,3 @@ public class CheckoutItemFactory {
         return new CheckoutCart(currentItemState.values());
     }
 }
-

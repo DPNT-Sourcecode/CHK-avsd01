@@ -14,23 +14,17 @@ import befaster.solutions.CHK.discounts.PriceForItemDiscountPack;
  */
 public class PriceDiscountOffer extends SpecialOffer{
     
-    protected int eligibleQuantity;
     protected int price;
     
     public PriceDiscountOffer (int quantity, int price) {
-        this.eligibleQuantity = quantity;
+        super(quantity);
         this.price = price;
     }
     
+    @Override
     public DiscountPack computeOfferFor(int itemCount) {
         int groups = itemCount / eligibleQuantity;
         return new PriceForItemDiscountPack(groups * eligibleQuantity, 
                 price * groups);
     }
-    
-    public boolean appliesTo(int quantity) {
-        return quantity >= eligibleQuantity;
-    }
 }
-
-

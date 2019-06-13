@@ -35,4 +35,3 @@ public class OtherItemDiscountPack extends DiscountPack {
         return DiscountType.OTHER_FREE;
     }
 }
-
