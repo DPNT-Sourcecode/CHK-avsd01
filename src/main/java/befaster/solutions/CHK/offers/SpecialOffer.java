@@ -23,5 +23,10 @@ public abstract class SpecialOffer {
     public boolean appliesTo(int quantity) {
         return quantity >= eligibleQuantity;
     }
+    
+    public interface SpecialOfferReceiver {
+        public void specialOfferReceived(SpecialOffer offer);
+    }
 }
+
 
