@@ -51,9 +51,9 @@ public class CheckoutItem {
     }
     
     public void computeAllOffers(DiscountPackReceiver discountPackReceiver, 
-            int leftQuantity) {
+            final int leftQuantity) {
         SpecialOffer bestOffer = availableOffers.stream()
-                .filter(o -> o.appliesTo(quantity))
+                .filter(o -> o.appliesTo(leftQuantity))
                 .sorted()
                 .findFirst()
                 .orElse(null);
@@ -62,9 +62,9 @@ public class CheckoutItem {
         }
         discountPackReceiver.discountPackReceived(bestOffer.computeOfferFor(
                 itemSKU, leftQuantity));
-        leftQuantity = leftQuantity - 
+        int newLeftQuantity = leftQuantity - 
                 bestOffer.getQuantityConsumedByOffer(leftQuantity);
-        computeAllOffers(discountPackReceiver, leftQuantity);
+        computeAllOffers(discountPackReceiver, newLeftQuantity);
     }
     
     public CheckoutItem getIncreasedCopy() {
@@ -76,3 +76,4 @@ public class CheckoutItem {
                 singleItemPrice, availableOffers);
     }
 }
+
