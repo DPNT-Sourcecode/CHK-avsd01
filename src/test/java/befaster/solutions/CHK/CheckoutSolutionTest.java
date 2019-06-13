@@ -15,15 +15,16 @@ import org.junit.Test;
 public class CheckoutSolutionTest {
     
     /**
-     * Our price table and offers: 
-        +------+-------+----------------+
-        | Item | Price | Special offers |
-        +------+-------+----------------+
-        | A    | 50    | 3A for 130     |
-        | B    | 30    | 2B for 45      |
-        | C    | 20    |                |
-        | D    | 15    |                |
-        +------+-------+----------------+
+        Our price table and offers: 
+        +------+-------+------------------------+
+        | Item | Price | Special offers         |
+        +------+-------+------------------------+
+        | A    | 50    | 3A for 130, 5A for 200 |
+        | B    | 30    | 2B for 45              |
+        | C    | 20    |                        |
+        | D    | 15    |                        |
+        | E    | 40    | 2E get one B free      |
+        +------+-------+------------------------+
      */
     
     @Test
@@ -61,4 +62,29 @@ public class CheckoutSolutionTest {
         int result = new CheckoutSolution().checkout("-");
         Assert.assertEquals(-1, result);
     }
+    
+    @Test
+    public void testUselessE() {
+        int result = new CheckoutSolution().checkout("EE");
+        Assert.assertEquals(80, result);
+    }
+    
+    @Test
+    public void testUsefulE() {
+        int result = new CheckoutSolution().checkout("EEB");
+        Assert.assertEquals(80, result);
+    }
+    
+    @Test
+    public void test5A() {
+        int result = new CheckoutSolution().checkout("AAAAA");
+        Assert.assertEquals(200, result);
+    }
+    
+    @Test
+    public void test8A() {
+        int result = new CheckoutSolution().checkout("AAAAAAA");
+        Assert.assertEquals(200, result);
+    }
 }
+

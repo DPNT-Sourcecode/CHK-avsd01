@@ -48,7 +48,9 @@ public class CheckoutItemFactory {
         
         switch (itemSKU) {
             case "A":
-                return new CheckoutItem(itemSKU, 1, 50, new PriceDiscountOffer(3, 130));
+                return new CheckoutItem(itemSKU, 1, 50, 
+                        new PriceDiscountOffer(3, 130), 
+                        new PriceDiscountOffer(5, 200));
             case "B": 
                 return new CheckoutItem(itemSKU, 1, 30, new PriceDiscountOffer(2, 45));
             case "C":
@@ -77,3 +79,4 @@ public class CheckoutItemFactory {
         return new CheckoutCart(currentItemState.values());
     }
 }
+
