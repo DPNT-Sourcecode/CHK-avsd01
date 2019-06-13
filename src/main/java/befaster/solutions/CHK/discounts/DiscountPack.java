@@ -17,6 +17,7 @@ public abstract class DiscountPack {
     }
     
     public abstract DiscountType getDiscountType();
+    public abstract void applyToCart(CheckoutCart cart);
     
     public interface DiscountPackReceiver {
         public void discountPackReceived(DiscountPack discountPack);
@@ -24,6 +25,7 @@ public abstract class DiscountPack {
     
     
 }
+
 
 
 

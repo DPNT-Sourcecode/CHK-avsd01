@@ -34,7 +34,7 @@ public class CheckoutCart implements
     }
     
     public int getTotal() {
-        offerList.stream().map(o -> );
+        discountPackList.stream().forEach(d -> d.applyToCart(this));
         
         return cartItems.stream().mapToInt(CheckoutItem::getTotal).sum();
     }
@@ -48,5 +48,6 @@ public class CheckoutCart implements
         discountPackList.add(discoutPack);
     }
 }
+
 
 
