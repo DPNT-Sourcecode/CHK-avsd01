@@ -66,7 +66,7 @@ public class CheckoutCart implements
         cartItems.add(item);
     }
     
-    private CheckoutItem getItemWithSKU(String sku) {
+    public CheckoutItem getItemWithSKU(String sku) {
         return cartItems.stream().filter(i -> sku.equals(i.getItemSKU()))
                 .findAny().orElse(null);
     }
@@ -80,6 +80,7 @@ public class CheckoutCart implements
         return new CheckoutCart(cartItems);
     }
 }
+
 
 
 
