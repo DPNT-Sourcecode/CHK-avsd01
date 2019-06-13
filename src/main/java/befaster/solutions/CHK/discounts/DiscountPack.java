@@ -16,6 +16,22 @@ public abstract class DiscountPack {
         OTHER_FREE, PRICE_REDUCTION
     }
     
+    private final String targetSKU;
+    private final int targetQuantity;
+    
+    public DiscountPack(String targetSKU, int targetQuantity) {
+        this.targetQuantity = targetQuantity;
+        this.targetSKU = targetSKU;
+    }
+
+    public String getTargetSKU() {
+        return targetSKU;
+    }
+
+    public int getTargetQuantity() {
+        return targetQuantity;
+    }
+    
     public abstract DiscountType getDiscountType();
     public abstract void applyToCart(CheckoutCart cart);
     
@@ -25,6 +41,7 @@ public abstract class DiscountPack {
     
     
 }
+
 
 
 

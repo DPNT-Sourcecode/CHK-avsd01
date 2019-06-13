@@ -14,7 +14,7 @@ import befaster.solutions.CHK.discounts.OtherItemDiscountPack;
  */
 public class OtherFreeProductOffer extends SpecialOffer {
     
-    private OtherItemDiscountPack suppliedDiscount;
+    private final OtherItemDiscountPack suppliedDiscount;
     
     public OtherFreeProductOffer(int eligibleItemQuantity, 
             OtherItemDiscountPack suppliedDiscount) {
@@ -24,6 +24,8 @@ public class OtherFreeProductOffer extends SpecialOffer {
 
     @Override
     public DiscountPack computeOfferFor(int itemCount) {
-        return new OtherItemDiscountPack(suppliedDiscount);
+        return new OtherItemDiscountPack(suppliedDiscount, 
+                itemCount / suppliedDiscount.getQuantity());
     }
 }
+
