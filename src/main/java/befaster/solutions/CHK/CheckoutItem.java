@@ -17,19 +17,21 @@ import java.util.List;
  * @author robert.damian
  */
 public class CheckoutItem {
+    protected final String itemSKU;
     protected final int quantity;
     protected final int singleItemPrice;
     
     private final List<SpecialOffer> availableOffers;
         
-    public CheckoutItem(int quantity, int singleItemPrice, SpecialOffer... availableOffers) {
-        this(quantity, singleItemPrice, Arrays.asList(availableOffers));
+    public CheckoutItem(String itemSKU, int quantity, int singleItemPrice, SpecialOffer... availableOffers) {
+        this(itemSKU, quantity, singleItemPrice, Arrays.asList(availableOffers));
     }
     
-    public CheckoutItem(int quantity, int singleItemPrice, Collection<SpecialOffer> availableOffers) {
+    public CheckoutItem(String itemSKU, int quantity, int singleItemPrice, Collection<SpecialOffer> availableOffers) {
         this.quantity = quantity;
         this.singleItemPrice = singleItemPrice;
         this.availableOffers = new ArrayList<>(availableOffers);
+        this.itemSKU = itemSKU;
     }
     
     public int getTotal() {
@@ -38,6 +40,10 @@ public class CheckoutItem {
     
     private int getTotal(int quantity) {
         return quantity * singleItemPrice;
+    }
+
+    public String getItemSKU() {
+        return itemSKU;
     }
     
     public void computeAllOffers(DiscountPackReceiver offerReceiver) {
@@ -66,4 +72,5 @@ public class CheckoutItem {
         return new CheckoutItem(quantity + 1, singleItemPrice, availableOffers);
     }
 }
+
 

@@ -42,12 +42,22 @@ public class CheckoutCart implements
     public void addItem(CheckoutItem item) {
         this.cartItems.add(item);
     }
+    
+    public void replace(String itemSKU, int count, CheckoutItem item) {
+        
+    }
+    
+    private CheckoutItem getItemWithSKU(String sku) {
+        return cartItems.stream().filter(i -> sku.equals(i.getItemSKU()))
+                .findAny().orElse(null);
+    }
 
     @Override
     public void discountPackReceived(DiscountPack discoutPack) {
         discountPackList.add(discoutPack);
     }
 }
+
 
 
 
