@@ -32,13 +32,16 @@ public class CheckoutSolutionTest {
         Assert.assertEquals(115, result);
     }
     
+    @Test
     public void testCartWithOfferA() {
         int result = new CheckoutSolution().checkout("A A A B C D");
         Assert.assertEquals(195, result);
     }
     
+    @Test
     public void testCartWithOfferB() {
         int result = new CheckoutSolution().checkout("A B B C D");
         Assert.assertEquals(130, result);
     }
 }
+

@@ -37,12 +37,9 @@ public class CheckoutItemFactory {
      * @param itemSKU
      * @return 
      */
-    public CheckoutItem feedNewItem(String itemSKU) {
+    private CheckoutItem getItemFor(String itemSKU) {
         if (currentItemState.containsKey(itemSKU)) {
-            CheckoutItem result = currentItemState.get(itemSKU);
-            result = result.getIncreasedCopy();
-            currentItemState.put(itemSKU, result);
-            return result;
+            return currentItemState.get(itemSKU).getIncreasedCopy();
         }
         
         switch (itemSKU) {
@@ -59,10 +56,17 @@ public class CheckoutItemFactory {
         throw new IllegalArgumentException("Unexpected SKU");
     }
     
+    public CheckoutItem feedNewItem(String itemSKU) {
+        CheckoutItem newItem = getItemFor(itemSKU);
+        currentItemState.put(itemSKU, newItem);
+        return newItem;
+    }
+    
     public CheckoutCart exportCart() {
         return new CheckoutCart(currentItemState.values());
     }
 }
+
 
 
 
