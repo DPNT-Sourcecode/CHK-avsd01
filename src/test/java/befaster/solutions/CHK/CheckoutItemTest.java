@@ -5,6 +5,7 @@
  */
 package befaster.solutions.CHK;
 
+import befaster.solutions.CHK.offers.PriceDiscountOffer;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -22,8 +23,9 @@ public class CheckoutItemTest {
     
     @Test
     public void testWithOffer() {
-        CheckoutItem item = new CheckoutItem(5, 40, new SpecialOffer(2, 70));
+        CheckoutItem item = new CheckoutItem(5, 40, new PriceDiscountOffer(2, 70));
         
         Assert.assertEquals(180, item.getTotal());
     }
 }
+

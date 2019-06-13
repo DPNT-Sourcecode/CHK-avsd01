@@ -5,6 +5,7 @@
  */
 package befaster.solutions.CHK;
 
+import befaster.solutions.CHK.offers.PriceDiscountOffer;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -44,9 +45,9 @@ public class CheckoutItemFactory {
         
         switch (itemSKU) {
             case "A":
-                return new CheckoutItem(1, 50, new SpecialOffer(3, 130));
+                return new CheckoutItem(1, 50, new PriceDiscountOffer(3, 130));
             case "B": 
-                return new CheckoutItem(1, 30, new SpecialOffer(2, 45));
+                return new CheckoutItem(1, 30, new PriceDiscountOffer(2, 45));
             case "C":
                 return new CheckoutItem(1, 20);
             case "D":
@@ -70,3 +71,4 @@ public class CheckoutItemFactory {
         return new CheckoutCart(currentItemState.values());
     }
 }
+

@@ -3,18 +3,20 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package befaster.solutions.CHK;
+package befaster.solutions.CHK.offers;
+
+import befaster.solutions.CHK.DiscountPack;
 
 /**
  *
  * @author robert.damian
  */
-public class SpecialOffer {
+public class PriceDiscountOffer {
     
     protected int eligibleQuantity;
     protected int price;
     
-    public SpecialOffer (int quantity, int price) {
+    public PriceDiscountOffer (int quantity, int price) {
         this.eligibleQuantity = quantity;
         this.price = price;
     }

@@ -5,6 +5,7 @@
  */
 package befaster.solutions.CHK;
 
+import befaster.solutions.CHK.offers.PriceDiscountOffer;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -18,13 +19,13 @@ public class CheckoutItem {
     protected final int quantity;
     protected final int singleItemPrice;
     
-    private final List<SpecialOffer> availableOffers;
+    private final List<PriceDiscountOffer> availableOffers;
         
-    public CheckoutItem(int quantity, int singleItemPrice, SpecialOffer... availableOffers) {
+    public CheckoutItem(int quantity, int singleItemPrice, PriceDiscountOffer... availableOffers) {
         this(quantity, singleItemPrice, Arrays.asList(availableOffers));
     }
     
-    public CheckoutItem(int quantity, int singleItemPrice, Collection<SpecialOffer> availableOffers) {
+    public CheckoutItem(int quantity, int singleItemPrice, Collection<PriceDiscountOffer> availableOffers) {
         this.quantity = quantity;
         this.singleItemPrice = singleItemPrice;
         this.availableOffers = new ArrayList<>(availableOffers);
@@ -35,7 +36,7 @@ public class CheckoutItem {
     }
     
     private int getTotal(int quantity) {
-        SpecialOffer bestOffer = availableOffers.stream()
+        PriceDiscountOffer bestOffer = availableOffers.stream()
                 .filter(o -> o.appliesTo(quantity))
                 .sorted((o1, o2) -> o1.computeOfferFor(quantity).getPrice() - 
                         o2.computeOfferFor(quantity).getPrice())
@@ -54,3 +55,4 @@ public class CheckoutItem {
         return new CheckoutItem(quantity + 1, singleItemPrice, availableOffers);
     }
 }
+
