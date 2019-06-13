@@ -12,24 +12,13 @@ import befaster.solutions.CHK.CheckoutCart;
  * @author robert.damian
  */
 public class OtherItemDiscountPack extends DiscountPack {
-    private final String itemSKU;
-    private final int quantity;
     
     public OtherItemDiscountPack(String itemSKU, int quantity) {
-        this.itemSKU = itemSKU;
-        this.quantity = quantity;
+        super(itemSKU, quantity);
     }
     
     public OtherItemDiscountPack(OtherItemDiscountPack pack, int offersCount) {
-        this(pack.itemSKU, pack.quantity * offersCount);
-    }
-
-    public String getItemSKU() {
-        return itemSKU;
-    }
-
-    public int getQuantity() {
-        return quantity;
+        this(pack.getTargetSKU(), pack.getTargetQuantity() * offersCount);
     }
 
     @Override
@@ -42,4 +31,5 @@ public class OtherItemDiscountPack extends DiscountPack {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
+
 

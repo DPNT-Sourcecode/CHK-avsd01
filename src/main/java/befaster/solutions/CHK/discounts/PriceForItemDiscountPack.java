@@ -13,16 +13,15 @@ import befaster.solutions.CHK.CheckoutCart;
  */
 public class PriceForItemDiscountPack extends DiscountPack {
     
-    private final int itemCount;
     private final int price;
     
-    public PriceForItemDiscountPack(int itemCount, int price) {
-        this.itemCount = itemCount;
+    public PriceForItemDiscountPack(String targetSKU, int targetCount, int price) {
+        super(targetSKU, targetCount);
         this.price = price;
     }
 
     public int getItemCount() {
-        return itemCount;
+        return getTargetQuantity();
     }
 
     public int getPrice() {
@@ -36,7 +35,8 @@ public class PriceForItemDiscountPack extends DiscountPack {
 
     @Override
     public void applyToCart(CheckoutCart cart) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
     }
 }
+
 
