@@ -34,7 +34,8 @@ public abstract class SpecialOffer implements Comparable<SpecialOffer>{
 
     @Override
     public int compareTo(SpecialOffer o) {
-        return eligibleQuantity - o.eligibleQuantity;
+        return o.eligibleQuantity - eligibleQuantity;
     }
     
 }
+
