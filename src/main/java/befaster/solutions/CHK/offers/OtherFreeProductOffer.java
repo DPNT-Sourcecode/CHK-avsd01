@@ -25,6 +25,7 @@ public class OtherFreeProductOffer extends SpecialOffer {
     @Override
     public DiscountPack computeOfferFor(String itemSKU, int itemCount) {
         return new OtherItemDiscountPack(suppliedDiscount, 
-                itemCount / suppliedDiscount.getTargetQuantity());
+                itemCount / eligibleQuantity);
     }
 }
+
