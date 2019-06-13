@@ -119,7 +119,14 @@ public class CheckoutItemFactory {
                 return new CheckoutItem(itemSKU, 1, 50, 
                         new PriceDiscountOffer(2, 90), 
                         new PriceDiscountOffer(3, 130));
-            
+            case "W":
+                return new CheckoutItem(itemSKU, 1, 20);
+            case "X":
+                return new CheckoutItem(itemSKU, 1, 90);
+            case "Y":
+                return new CheckoutItem(itemSKU, 1, 10);
+            case "Z":
+                return new CheckoutItem(itemSKU, 1, 50);
         }
         
         throw new IllegalArgumentException("Unexpected SKU");
@@ -139,6 +146,7 @@ public class CheckoutItemFactory {
         return new CheckoutCart(currentItemState.values());
     }
 }
+
 
 
 
