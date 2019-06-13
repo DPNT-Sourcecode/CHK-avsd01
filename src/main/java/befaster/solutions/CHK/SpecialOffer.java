@@ -11,11 +11,18 @@ package befaster.solutions.CHK;
  */
 public class SpecialOffer {
     
-    protected int quantity;
+    protected int eligibleQuantity;
     protected int price;
     
     public SpecialOffer (int quantity, int price) {
-        
+        this.eligibleQuantity = quantity;
+        this.price = price;
+    }
+    
+    public DiscountPack computeOfferFor(int itemCount) {
+        int groups = itemCount / eligibleQuantity;
+        return new DiscountPack(groups * eligibleQuantity, price * groups);
     }
 }
+
 
