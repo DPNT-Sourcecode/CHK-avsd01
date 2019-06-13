@@ -5,6 +5,8 @@
  */
 package befaster.solutions.CHK.discounts;
 
+import befaster.solutions.CHK.CheckoutCart;
+
 /**
  *
  * @author robert.damian
@@ -31,4 +33,10 @@ public class PriceForItemDiscountPack extends DiscountPack {
     public DiscountType getDiscountType() {
         return DiscountType.PRICE_REDUCTION;
     }
+
+    @Override
+    public void applyToCart(CheckoutCart cart) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
+

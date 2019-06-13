@@ -5,6 +5,8 @@
  */
 package befaster.solutions.CHK;
 
+import befaster.solutions.CHK.discounts.OtherItemDiscountPack;
+import befaster.solutions.CHK.offers.OtherFreeProductOffer;
 import befaster.solutions.CHK.offers.PriceDiscountOffer;
 import java.util.HashMap;
 import java.util.Map;
@@ -27,14 +29,15 @@ public class CheckoutItemFactory {
     
     /**
      * Our price table and offers: 
-        +------+-------+----------------+
-        | Item | Price | Special offers |
-        +------+-------+----------------+
-        | A    | 50    | 3A for 130     |
-        | B    | 30    | 2B for 45      |
-        | C    | 20    |                |
-        | D    | 15    |                |
-        +------+-------+----------------+
+    +------+-------+------------------------+
+    | Item | Price | Special offers         |
+    +------+-------+------------------------+
+    | A    | 50    | 3A for 130, 5A for 200 |
+    | B    | 30    | 2B for 45              |
+    | C    | 20    |                        |
+    | D    | 15    |                        |
+    | E    | 40    | 2E get one B free      |
+    +------+-------+------------------------+
      * @param itemSKU
      * @return 
      */
@@ -45,13 +48,16 @@ public class CheckoutItemFactory {
         
         switch (itemSKU) {
             case "A":
-                return new CheckoutItem(1, 50, new PriceDiscountOffer(3, 130));
+                return new CheckoutItem(itemSKU, 1, 50, new PriceDiscountOffer(3, 130));
             case "B": 
-                return new CheckoutItem(1, 30, new PriceDiscountOffer(2, 45));
+                return new CheckoutItem(itemSKU, 1, 30, new PriceDiscountOffer(2, 45));
             case "C":
-                return new CheckoutItem(1, 20);
+                return new CheckoutItem(itemSKU, 1, 20);
             case "D":
-                return new CheckoutItem(1, 15);
+                return new CheckoutItem(itemSKU, 1, 15);
+            case "E":
+                return new CheckoutItem(itemSKU, 1, 40, new OtherFreeProductOffer(2, 
+                        new OtherItemDiscountPack("B", 1)));
         }
         
         throw new IllegalArgumentException("Unexpected SKU");
@@ -59,7 +65,7 @@ public class CheckoutItemFactory {
     
     public CheckoutItem feedNewItem(String itemSKU) {
         if ("".equals(itemSKU)) {
-            return new CheckoutItem(0, 0);
+            return new CheckoutItem("free", 0, 0);
         }
         
         CheckoutItem newItem = getItemFor(itemSKU);
@@ -71,3 +77,4 @@ public class CheckoutItemFactory {
         return new CheckoutCart(currentItemState.values());
     }
 }
+

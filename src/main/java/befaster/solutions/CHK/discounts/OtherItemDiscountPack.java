@@ -5,6 +5,8 @@
  */
 package befaster.solutions.CHK.discounts;
 
+import befaster.solutions.CHK.CheckoutCart;
+
 /**
  *
  * @author robert.damian
@@ -18,8 +20,8 @@ public class OtherItemDiscountPack extends DiscountPack {
         this.quantity = quantity;
     }
     
-    public OtherItemDiscountPack(OtherItemDiscountPack pack) {
-        this(pack.itemSKU, pack.quantity);
+    public OtherItemDiscountPack(OtherItemDiscountPack pack, int offersCount) {
+        this(pack.itemSKU, pack.quantity * offersCount);
     }
 
     public String getItemSKU() {
@@ -34,4 +36,10 @@ public class OtherItemDiscountPack extends DiscountPack {
     public DiscountType getDiscountType() {
         return DiscountType.OTHER_FREE;
     }
+
+    @Override
+    public void applyToCart(CheckoutCart cart) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
+
