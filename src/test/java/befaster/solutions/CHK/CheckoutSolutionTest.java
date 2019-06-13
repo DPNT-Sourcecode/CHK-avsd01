@@ -43,5 +43,10 @@ public class CheckoutSolutionTest {
         int result = new CheckoutSolution().checkout("A B B C D");
         Assert.assertEquals(130, result);
     }
+    
+    @Test
+    public void testEmptyCart() {
+        int result = new CheckoutSolution().checkout("");
+        Assert.assertEquals(0, result);
+    }
 }
-

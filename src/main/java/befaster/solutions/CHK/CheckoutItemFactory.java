@@ -57,6 +57,10 @@ public class CheckoutItemFactory {
     }
     
     public CheckoutItem feedNewItem(String itemSKU) {
+        if ("".equals(itemSKU)) {
+            return new CheckoutItem(0, 0);
+        }
+        
         CheckoutItem newItem = getItemFor(itemSKU);
         currentItemState.put(itemSKU, newItem);
         return newItem;
@@ -66,7 +70,3 @@ public class CheckoutItemFactory {
         return new CheckoutCart(currentItemState.values());
     }
 }
-
-
-
-

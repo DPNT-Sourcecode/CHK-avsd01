@@ -39,5 +39,3 @@ public class CheckoutItem {
         return new CheckoutItem(quantity + 1, singleItemPrice, availableOffer);
     }
 }
-
-
