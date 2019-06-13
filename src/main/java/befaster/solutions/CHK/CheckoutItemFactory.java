@@ -14,10 +14,9 @@ import java.util.Map;
  */
 public class CheckoutItemFactory {
     
-    private CheckoutItemFactory INSTANCE;
     private Map<String, CheckoutItem> currentItemState;
     
-    private CheckoutItemFactory() {
+    public CheckoutItemFactory() {
         resetFactory();
     }
     
@@ -25,13 +24,6 @@ public class CheckoutItemFactory {
         currentItemState = new HashMap<>();
     }
     
-    public CheckoutItemFactory getInstance() {
-        if (INSTANCE == null) {
-            INSTANCE = new CheckoutItemFactory();
-        }
-        
-        return INSTANCE;
-    }
     /**
      * Our price table and offers: 
         +------+-------+----------------+
@@ -45,7 +37,7 @@ public class CheckoutItemFactory {
      * @param itemSKU
      * @return 
      */
-    public CheckoutItem getItemFor(String itemSKU) {
+    public CheckoutItem feedNewItem(String itemSKU) {
         if (currentItemState.containsKey(itemSKU)) {
             CheckoutItem result = currentItemState.get(itemSKU);
             result = result.getIncreasedCopy();
@@ -66,6 +58,11 @@ public class CheckoutItemFactory {
         
         throw new IllegalArgumentException("Unexpected SKU");
     }
+    
+    public CheckoutCart exportCart() {
+        return new CheckoutCart(currentItemState.values());
+    }
 }
+
 
 

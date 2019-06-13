@@ -1,9 +1,14 @@
 package befaster.solutions.CHK;
 
-import befaster.runner.SolutionNotImplementedException;
-
 public class CheckoutSolution {
     public Integer checkout(String skus) {
-        throw new SolutionNotImplementedException();
+        CheckoutItemFactory factory = new CheckoutItemFactory();
+        
+        for(String itemSKU : skus.split(" ")) {
+            factory.feedNewItem(itemSKU);
+        }
+        CheckoutCart resultCart = factory.exportCart();
+        return resultCart.getTotal();
     }
 }
+
