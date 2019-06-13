@@ -38,6 +38,10 @@ public class CheckoutItem {
         return getTotal(quantity);
     }
     
+    public int getPriceForSingleItem() {
+        return singleItemPrice;
+    }
+    
     private int getTotal(int quantity) {
         return quantity * singleItemPrice;
     }
@@ -81,3 +85,4 @@ public class CheckoutItem {
                 singleItemPrice, availableOffers);
     }
 }
+

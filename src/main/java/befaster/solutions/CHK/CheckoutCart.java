@@ -10,6 +10,8 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  *
@@ -71,7 +73,11 @@ public class CheckoutCart implements
     
     private void handleReplacementWithSKUGroup(String skuGroup, int count, 
             CheckoutItem item) {
-        
+        List<CheckoutItem> sortedMatchingList = Stream.of(skuGroup.split(""))
+                .map(sku -> getItemWithSKU(sku))
+                .sorted((i1, i2) -> i2.getPriceForSingleItem() - 
+                        i1.getPriceForSingleItem())
+                .collect(Collectors.toList());
     }
     
     public CheckoutItem getItemWithSKU(String sku) {
@@ -90,5 +96,6 @@ public class CheckoutCart implements
         return new CheckoutCart(cartItems);
     }
 }
+
 
 
