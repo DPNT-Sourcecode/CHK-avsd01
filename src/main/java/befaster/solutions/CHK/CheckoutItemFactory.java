@@ -89,6 +89,22 @@ public class CheckoutItemFactory {
                         new PriceDiscountOffer(10, 80));
             case "I":
                 return new CheckoutItem(itemSKU, 1, 35);
+            case "J":
+                return new CheckoutItem(itemSKU, 1, 60);
+            case "K":
+                return new CheckoutItem(itemSKU, 1, 80, new PriceDiscountOffer(2, 150));
+            case "L":
+                return new CheckoutItem(itemSKU, 1, 90);                
+            case "M":
+                return new CheckoutItem(itemSKU, 1, 15);                
+            case "N":
+                return new CheckoutItem(itemSKU, 1, 40, new OtherFreeProductOffer(3, 
+                        new OtherItemDiscountPack("M", 1)));
+            case "O":
+                return new CheckoutItem(itemSKU, 1, 10);                
+            case "P":
+                return new CheckoutItem(itemSKU, 1, 50, new PriceDiscountOffer(5, 200));
+            
         }
         
         throw new IllegalArgumentException("Unexpected SKU");
@@ -108,5 +124,6 @@ public class CheckoutItemFactory {
         return new CheckoutCart(currentItemState.values());
     }
 }
+
 
 
