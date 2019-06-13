@@ -16,5 +16,3 @@ public class GroupDiscountPack extends PriceForItemDiscountPack{
     }
     
 }
-
-

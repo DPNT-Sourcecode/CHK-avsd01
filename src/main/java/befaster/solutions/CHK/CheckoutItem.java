@@ -85,4 +85,3 @@ public class CheckoutItem {
                 singleItemPrice, availableOffers);
     }
 }
-

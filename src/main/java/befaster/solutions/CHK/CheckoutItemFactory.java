@@ -8,6 +8,7 @@ package befaster.solutions.CHK;
 import befaster.solutions.CHK.discounts.OtherItemDiscountPack;
 import befaster.solutions.CHK.offers.OtherFreeProductOffer;
 import befaster.solutions.CHK.offers.PriceDiscountOffer;
+import befaster.solutions.CHK.offers.PriceGroupDiscountOffer;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -110,9 +111,9 @@ public class CheckoutItemFactory {
                 return new CheckoutItem(itemSKU, 1, 50, new OtherFreeProductOffer(3, 
                         new OtherItemDiscountPack("Q", 1)));
             case "S":
-                return new CheckoutItem(itemSKU, 1, 30);
+                return new CheckoutItem(itemSKU, 1, 20, new PriceGroupDiscountOffer("STXYZ", 3, 45));
             case "T":
-                return new CheckoutItem(itemSKU, 1, 20);
+                return new CheckoutItem(itemSKU, 1, 20, new PriceGroupDiscountOffer("STXYZ", 3, 45));
             case "U":
                 return new CheckoutItem(itemSKU, 1, 40, new PriceDiscountOffer(4, 120));
             case "V":
@@ -121,14 +122,14 @@ public class CheckoutItemFactory {
                         new PriceDiscountOffer(3, 130));
             case "W":
                 return new CheckoutItem(itemSKU, 1, 20);
+            
             case "X":
-                return new CheckoutItem(itemSKU, 1, 90);
+                return new CheckoutItem(itemSKU, 1, 17, new PriceGroupDiscountOffer("STXYZ", 3, 45));
             case "Y":
-                return new CheckoutItem(itemSKU, 1, 10);
+                return new CheckoutItem(itemSKU, 1, 20, new PriceGroupDiscountOffer("STXYZ", 3, 45));
             case "Z":
-                return new CheckoutItem(itemSKU, 1, 50);
+                return new CheckoutItem(itemSKU, 1, 21, new PriceGroupDiscountOffer("STXYZ", 3, 45));
         }
-        
         throw new IllegalArgumentException("Unexpected SKU");
     }
     
