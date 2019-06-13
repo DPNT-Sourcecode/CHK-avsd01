@@ -104,6 +104,21 @@ public class CheckoutItemFactory {
                 return new CheckoutItem(itemSKU, 1, 10);                
             case "P":
                 return new CheckoutItem(itemSKU, 1, 50, new PriceDiscountOffer(5, 200));
+            case "Q":
+                return new CheckoutItem(itemSKU, 1, 30, new PriceDiscountOffer(3, 80));
+            case "R":
+                return new CheckoutItem(itemSKU, 1, 50, new OtherFreeProductOffer(3, 
+                        new OtherItemDiscountPack("Q", 1)));
+            case "S":
+                return new CheckoutItem(itemSKU, 1, 30);
+            case "T":
+                return new CheckoutItem(itemSKU, 1, 20);
+            case "U":
+                return new CheckoutItem(itemSKU, 1, 40, new PriceDiscountOffer(4, 120));
+            case "V":
+                return new CheckoutItem(itemSKU, 1, 50, 
+                        new PriceDiscountOffer(2, 90), 
+                        new PriceDiscountOffer(3, 130));
             
         }
         
@@ -124,6 +139,7 @@ public class CheckoutItemFactory {
         return new CheckoutCart(currentItemState.values());
     }
 }
+
 
 
 
