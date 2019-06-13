@@ -104,4 +104,10 @@ public class CheckoutSolutionTest {
         int result = new CheckoutSolution().checkout("AAAAAAAA");
         Assert.assertEquals(330, result);
     }
+    
+    public void testF() {
+        int result = new CheckoutSolution().checkout("FFF");
+        Assert.assertEquals(20, result);
+    }
 }
+

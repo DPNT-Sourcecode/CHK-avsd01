@@ -37,6 +37,7 @@ public class CheckoutItemFactory {
     | C    | 20    |                        |
     | D    | 15    |                        |
     | E    | 40    | 2E get one B free      |
+    | F    | 10    | 2F get one F free      |
     +------+-------+------------------------+
      * @param itemSKU
      * @return 
@@ -60,6 +61,8 @@ public class CheckoutItemFactory {
             case "E":
                 return new CheckoutItem(itemSKU, 1, 40, new OtherFreeProductOffer(2, 
                         new OtherItemDiscountPack("B", 1)));
+            case "F":
+                return new CheckoutItem(itemSKU, 1, 10, new PriceDiscountOffer(3, 20));
         }
         
         throw new IllegalArgumentException("Unexpected SKU");
@@ -79,3 +82,4 @@ public class CheckoutItemFactory {
         return new CheckoutCart(currentItemState.values());
     }
 }
+
